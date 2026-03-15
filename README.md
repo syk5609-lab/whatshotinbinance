@@ -58,6 +58,27 @@ pwd
 
 `pwd` 결과가 현재 경로입니다. (예: `/Users/kimsoohyun/Downloads/whatshotinbinance`)
 
+
+> ⚠️ `cd "<방금 찾은 경로>"`는 예시 문구입니다. `<...>`를 그대로 입력하면 안 됩니다.
+>
+> 예를 들어 `find` 결과가 `/Users/kimsoohyun/Downloads/whatshotinbinance` 라면 아래처럼 **실제 경로**를 넣어야 합니다.
+>
+> ```bash
+> cd /Users/kimsoohyun/Downloads/whatshotinbinance
+> ```
+
+
+
+### 2-1) `Operation not permitted`가 많이 뜰 때
+macOS 개인정보 보호 폴더(메일, 캘린더 등) 때문에 뜨는 경고입니다.
+프로젝트 찾기에는 큰 문제 없고, 아래처럼 에러 메시지를 숨기면 됩니다.
+
+```bash
+find ~ -maxdepth 3 -type d -name "whatshotinbinance" 2>/dev/null
+```
+
+출력 결과가 없으면 아직 프로젝트 폴더가 없는 상태이므로, 아래 `git clone` 방법으로 진행하세요.
+
 ### 방법 B) 폴더가 없는 경우 (git clone)
 GitHub 저장소 주소를 알고 있다면:
 
@@ -134,7 +155,7 @@ python3 -m streamlit run app.py
 
 ```bash
 cd ~
-find . -maxdepth 3 -type d -name "whatshotinbinance"
+find ~ -maxdepth 3 -type d -name "whatshotinbinance" 2>/dev/null
 ```
 
 찾은 경로로 `cd` 하세요.
